@@ -19,7 +19,6 @@ const ParticlesOptions = {
           enable : true,
           value_area: 800
         }
-        
       }
     }
 }
@@ -28,10 +27,7 @@ const app = new Clarifai.App({
  apiKey: '663f402a5ed949cb89f701dbf26a0a73'
 });
 
-
-
 class App extends Component {
-
   constructor(){
     super();
     this.state = {
@@ -42,6 +38,12 @@ class App extends Component {
       isSignedIn: false,
     }
   }
+
+  /*componentDidMount(){
+    fetch('http://localhost:3001')
+    .then(response => response.json())
+    .then(console.log);
+  }*/
 
   calulateFaceLocation = (data) => {
     const claraifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
