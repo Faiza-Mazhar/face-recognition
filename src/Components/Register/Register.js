@@ -14,7 +14,7 @@ constructor(props){
 
 	onSubmitRegister= () => {
 
-		fetch('http://localhost:3001/signin', {
+		fetch('http://localhost:3001/register', {
 			method : 'post',
 			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify({
@@ -24,8 +24,10 @@ constructor(props){
 			})
 		}).then(response => response.json())
 		.then(user => {
-			if(user)
+			if(user){
+				this.props.loadUser(user);
 				this.props.onRouteChange('home');
+			}
 		})
 		
 	}
@@ -44,7 +46,7 @@ constructor(props){
 
 
 	render(){
-		const { onRouteChange} = this.state;
+		
 		return (
 			<article className=" br4 shadow-3 b--black-10 mv4 w-100 w-50-m w-25-l mw6 center" >
 			<main className="pa4 black-80">
